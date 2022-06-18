@@ -117,7 +117,7 @@ def disableVsync(): # MAIN PROGRAM!!!
             Engine = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\Engine.ini" # Engine File
             os.chmod(Engine, S_IREAD|S_IRGRP|S_IROTH) # Lock Engine.ini, prevent the dbd restore this file to default
 
-            # Finished
+            # Program Finished
             print(Fore.GREEN+"\nV-Sync Disabled!"+Fore.WHITE)
             time.sleep(2)
             os.system('cls')
