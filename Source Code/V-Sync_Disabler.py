@@ -74,7 +74,7 @@ def disableVsync(): # MAIN PROGRAM!!!
 
             Engine = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\Engine.ini" # Engine File
             os.chmod(Engine, stat.S_IWRITE)
-            
+
             # Remove Current Engine file and replace it with default Engine file & Copy the original to Config Location
             Engine = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\Engine.ini" # Engine File
             os.remove(Engine)
@@ -82,7 +82,6 @@ def disableVsync(): # MAIN PROGRAM!!!
             Engine_src = "Resources\\Backup\\Engine.ini"
             Engine_dst = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\"
             shutil.copy(Engine_src, Engine_dst)
-
 
             try:
                 GameUserSettings_Res = "Resources\\GameUserSettings.ini" # Config File
