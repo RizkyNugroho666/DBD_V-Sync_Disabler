@@ -1,4 +1,4 @@
-import os                                                                           # Coded by: 1ntrovertskrrt
+import os                                                                        # Coded by: 1ntrovertskrrt
 import time
 import shutil
 import stat
@@ -30,35 +30,35 @@ def disableVsync(): # MAIN PROGRAM!!!
             command = str(input("\n>> ")) # Input Command
 
             if command == "1":
-                selectedGamePlatfrom = gamePlatfrom[0]
+                selectedGamePlatfrom = gamePlatfrom[0] # Steam
             
             elif command == "2":
-                selectedGamePlatfrom = gamePlatfrom[1]
+                selectedGamePlatfrom = gamePlatfrom[1] # Epic Games
             
             elif command == "3":
-                selectedGamePlatfrom = gamePlatfrom[2]
+                selectedGamePlatfrom = gamePlatfrom[2] # Microsoft Store
             
-            elif command == "4":
+            elif command == "4": # Restore the Config to default settings
                 os.system('cls')
                 fixerror()
                 return disableVsync()
 
-            elif command == "5":
+            elif command == "5": # Open Discord Server with default browser
                 os.system('cls')
                 openDiscord()
                 return disableVsync()
 
-            elif command == "6":
+            elif command == "6": # Exit Program
                 os.system('exit')
                 break
 
-            else:
+            else: # If user input wrong command, then
                 print(Fore.RED+"\nInvalid Command! Please enter a number!"+Fore.WHITE)
                 time.sleep(2)
                 os.system('cls')
                 return disableVsync()
 
-        except FileExistsError:
+        except FileExistsError: # Exception to handle an error!
             print(Fore.RED+"\nAn Unknown Error Occured!"+Fore.WHITE)
             time.sleep(2)
             os.system('cls')
@@ -78,9 +78,10 @@ def disableVsync(): # MAIN PROGRAM!!!
             # Remove Current Engine file and replace it with default Engine file & Copy the original to Config Location
             Engine = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\Engine.ini" # Engine File
             os.remove(Engine)
-
-            Engine_src = "Resources\\Backup\\Engine.ini"
-            Engine_dst = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\"
+            
+            # Copy Engine File from Backup folder into Original Location
+            Engine_src = "Resources\\Backup\\Engine.ini" 
+            Engine_dst = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\" 
             shutil.copy(Engine_src, Engine_dst)
 
             try:
@@ -105,7 +106,7 @@ def disableVsync(): # MAIN PROGRAM!!!
 
             shutil.copy(engine_dst, engine_target) # Copy the original Engine to Resources folder, to edit and re-copy it again to dbd config file location
 
-            # Change Config (MOST IMPORTANT CODE!!!)
+            # Open & Change Config Files (MOST IMPORTANT CODE!!!)
             with open("Resources\\GameUserSettings.ini", "rt") as config_res, open(f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\GameUserSettings.ini", "wt") as config_dbd:
                 for line in config_res:
                     config_dbd.write(line.replace('bUseVSync=True','bUseVSync=False'))
@@ -123,7 +124,7 @@ def disableVsync(): # MAIN PROGRAM!!!
             os.system('cls')
             return disableVsync()
 
-        except FileNotFoundError:
+        except FileNotFoundError: # Exception to handle an error!
             print(Fore.RED+"\nConfig File Not Found!"+Fore.WHITE)
             time.sleep(2)
             os.system('cls')
@@ -141,13 +142,13 @@ def fixerror(): # Fix Config Error & Restore it to default
     print("\n[1] Restore DBD Steam Config\n[2] Restore DBD Epic Games Config\n[3] Restore DBD Microsoft Config")
     command = str(input(Fore.GREEN+"\n>> "+Fore.WHITE)) # Input Command
     if command == "1":
-        selectedGamePlatfrom = gamePlatfrom[0]
+        selectedGamePlatfrom = gamePlatfrom[0] # Steam
     
     elif command == "2":
-        selectedGamePlatfrom = gamePlatfrom[1]
+        selectedGamePlatfrom = gamePlatfrom[1] # Epic Games
     
     elif command == "3":
-        selectedGamePlatfrom = gamePlatfrom[2]
+        selectedGamePlatfrom = gamePlatfrom[2] # Microsoft Store
 
     print("\nRestoring your config files...")
     time.sleep(2)
@@ -167,7 +168,7 @@ def fixerror(): # Fix Config Error & Restore it to default
         Engine = f"{home}\\AppData\\Local\\DeadbyDaylight\\Saved\\Config\\{selectedGamePlatfrom}\\GameUserSettings.ini" # Engine File
         os.remove(Engine)
 
-    except FileNotFoundError:
+    except FileNotFoundError: # Exception to handle an error! | if File Not Found, then just pass
         pass
 
     try:
@@ -185,7 +186,7 @@ def fixerror(): # Fix Config Error & Restore it to default
         time.sleep(2)
         os.system('cls')
 
-    except FileNotFoundError:
+    except FileNotFoundError: # Exception to handle an error!
         print("\nConfig Not Found! Please select valid platfrom!")
         os.system('cls')
         time.sleep(2)
